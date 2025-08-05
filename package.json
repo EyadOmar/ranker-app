@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:client": "pnpm --filter client dev",
-    "dev:server": "pnpm --filter server start:dev",
-    "dev": "concurrently -k -n client,server -c blue,green \"pnpm dev:client\" \"pnpm dev:server\""
+    "docker:compose": "docker-compose up -d",
+    "client:dev": "pnpm --filter client dev",
+    "server:dev": "wait-on tcp:6379 && pnpm --filter server start:dev",
+    "start": "concurrently -k -n docker,server,client -c yellow,green,blue \"pnpm docker:compose\" \"pnpm server:dev\" \"pnpm client:dev\"",
+    "stop": "docker-compose down"
   },
   "devDependencies": {
-    "concurrently": "^8.0.0"
+    "concurrently": "^8.2.2",
+    "wait-on": "^8.0.4"
   },
   "keywords": [],
   "author": "",
