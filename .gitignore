@@ -1,0 +1,7 @@
+# .gitignore (in root of ranker-app)
+node_modules/
+client/node_modules/
+server/node_modules/
+dist/
+build/
+*.log
