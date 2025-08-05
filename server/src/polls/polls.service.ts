@@ -18,7 +18,7 @@ export class PollsService {
     const userId = createUserId();
 
     console.log('Joining poll with data:', joinPollDto);
-    return `This action joins a #${id} poll`;
+    return `This action joins a  poll`;
   }
 
   async rejoin(id: number) {
